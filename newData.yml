@@ -1,0 +1,295 @@
+name: horus_backend
+version: 0.0.1
+
+env:
+    default_mode: prod 
+    required_keys: 
+    
+    default:
+      runRedisFromExe: true
+      # File defaults
+      port: 80
+      processEnvVar:
+        SENTRY:
+          type: "String" 
+          defaultValue: "false"
+          accessGroup: "Advanced"
+          description: "Report errors to sentry system"
+          group: "System"
+
+        ROOT_API:
+          type: "String"
+          defaultValue: "192.168.28.194:2105"
+          accessGroup: "Advanced"
+          description: "Backend root API"
+          group: "API Url"
+        SOCKET_STREAM_URL:
+          type: "String"
+          defaultValue: "192.168.28.194:3001"
+          accessGroup: "Advanced"
+          description: "Socket stream API Url"
+          group: "API Url"
+        IMAGE_PREFIX:
+          type: "String"
+          defaultValue: "192.168.28.194:9000"
+          accessGroup: "Advanced"
+          description: "Image prefix API Url"
+          group: "API Url"
+        SSL:
+          type: "String"
+          defaultValue: "false"
+          accessGroup: "Advanced"
+          description: "SSL"
+          group: "API Url"
+          
+        maximumCount:         
+          type: "Int"
+          defaultValue: 2000
+          accessGroup: "Advanced"
+          description: "Maximum logs per query"
+          group: "History logs"
+        maximumStore:         
+          type: "Int"
+          defaultValue: 100000
+          accessGroup: "Basic"
+          description: "Maximum logs can store"
+          group: "History logs"
+        checkinTime:
+          type: "String"
+          defaultValue: "8:30 am"
+          accessGroup: "Basic"
+          description: "Checkin time"
+          group: "History Logs"
+        checkoutTime:
+          type: "String"
+          defaultValue: "6:00 pm"
+          accessGroup: "Basic"
+          description: "Checkout time"
+          group: "History Logs"
+        timezone:
+          type: "String"
+          defaultValue: "Asia/Saigon"
+          accessGroup: "Advanced"
+          description: "Timezone for checkin/checkout"
+          group: "History Logs"
+        maximumMonitors:
+          type: "Int"
+          defaultValue: 6
+          accessGroup: "Advanced"
+          description: "Limit number monitors"
+          group: "Monitors"
+
+        faceDetectionThreshold:
+          type: "Float"
+          defaultValue: 0.5
+          accessGroup: "Advanced"
+          description: "Face threshold for detection"
+          group: "Lib face detection"
+        targetSize: 
+          type: "Int"
+          defaultValue: 960
+          accessGroup: "Advanced"
+          description: "Size of frame for detection and primary streaming"
+          group: "Lib face detection"
+          restart: true
+        targetQuality: 
+          type: "Int"
+          defaultValue: 85
+          accessGroup: "Advanced"
+          description: "Frame quality for detection and primary streaming"
+          group: "Lib face detection"
+          restart: true
+
+        faceThreshold:
+          type: "Float"
+          defaultValue: 0.835
+          accessGroup: "Advanced"
+          description: "Face threshold for recognition"
+          group: "Lib face recognition"
+        trueOnePersonThreshold:
+          type: "Float"
+          defaultValue: 0.84
+          accessGroup: "Advanced"
+          description: "Register user face threshold for checking exists"
+          group: "Lib face recognition"
+        quality:
+          type: "Int"
+          defaultValue: 90
+          accessGroup: "Advanced"
+          description: "Frame quality for recognition"
+          group: "Lib face recognition"
+        registerSimilarityThreshold:
+          type: "Float"
+          defaultValue: 0.86
+          accessGroup: "Advanced"
+          description: "Register uses face if similarity greater than value"
+          group: "Lib face recognition"
+        liveness:         
+          type: "String"
+          defaultValue: "false"
+          accessGroup: "Advanced"
+          description: "Run liveness model for checking"
+          group: "Lib face recognition"
+        MAX_IMAGE_PER_USER:         
+          type: "Int"
+          defaultValue: 9
+          accessGroup: "Advanced"
+          description: "Max faces can be registered per user"
+          group: "Lib face recognition"
+        outputLimit:
+          type: "Int"
+          defaultValue: 9
+          accessGroup: "Advanced"
+          description: "Limit faces output in search face"
+          group: "Lib face recognition"
+        embeddingSize:
+          type: "Int"
+          defaultValue: 512
+          accessGroup: "Advanced"
+          description: "Size of the face embedding"
+          group: "Lib face recognition"
+        autoFaceRegisteredLimit:
+          type: "Int"
+          defaultValue: 3
+          accessGroup: "Advanced"
+          description: "Size of maximum faces can be automatic registered by monitor transaction"
+          group: "Lib face recognition"
+        
+        secondaryStreamResolution: 
+          type: "Int"
+          defaultValue: 480
+          accessGroup: "Advanced"
+          description: "Resolution for secondary stream"
+          group: "Streaming"
+        fps:
+          type: "Int"
+          defaultValue: 10
+          accessGroup: "Advanced"
+          description: "Frames per second"
+          group: "Streaming"
+        secondaryStreamQuality: 
+          type: "Int"
+          defaultValue: 60
+          accessGroup: "Advanced"
+          description: "Frame Quality secondary primary"
+          group: "Streaming"
+        skipTrackingThreshold:         
+          type: "Int"
+          defaultValue: 3000
+          accessGroup: "Advanced"
+          description: "Skip tracking if in $skipTrackingThreshold milliseconds recognize the same person"
+          group: "Streaming"
+
+        SSO_ROOT_API: 
+          type: "String"
+          defaultValue: "https://horus-dashboard-fis-hrms.tunnel.techainer.com/api"
+          description: "SSO backend root api"
+          group: "SSO"
+        SSO_USER:
+          type: "String"
+          defaultValue: "EVNHANOI"
+          description: "SSO USER"
+          group: "SSO"
+        SSO_PASS:
+          type: "String"
+          defaultValue: "EVNHANOI@CuongX16"
+          description: "SSO PASS"
+          group: "SSO"
+      db:
+        type: postgres
+      ssl:
+        enabled: false
+      bindIP: 0.0.0.0
+      logLevel: info
+      offline: false
+      # DB defaults
+      api:
+        isEnabled: true
+      lang:
+        code: en
+        autoUpdate: true
+        namespaces: []
+        namespacing: false
+        rtl: false
+      title: Horus
+      theming:
+        theme: 'default'
+        iconset: 'md'
+        darkMode: false
+      security:
+        securityOpenRedirect: true
+        securityIframe: true
+        securityReferrerPolicy: true
+        securityTrustProxy: true
+        securityHSTS: false
+        securityHSTSDuration: 300
+      uploads:
+        maxFileSize: 800000000
+        maxFiles: 20
+      flags:
+        ldapdebug: false
+        sqllog: false
+      # System defaults
+      channel: STABLE
+      setup: false
+      cors:
+        credentials: true
+        maxAge: 600
+        methods: 'GET,POST,OPTIONS'
+        origin: true
+      # Admin account
+      admin:
+        email: 'admin@horus.com'
+        password: 'horus123'
+        position: 'Developer'
+        memberId: HE150068
+        orgName: 'Techainer' 
+    jobs:
+      # syncGraphLocales:
+      #   onInit: true
+      #   schedule: P1D
+      #   offlineSkip: true
+      #   repeat: true
+      # syncGraphUpdates:
+      #   onInit: true
+      #   schedule: P1D
+      #   offlineSkip: true
+      #   repeat: true
+      fileCustomerProcess:
+        onInit: true
+        offlineSkip: false
+        repeat: false
+      subscriptionLog:
+        onInit: true
+        schedule: '50'
+        offlineSkip: false
+        repeat: true
+      syncSso:
+        onInit: true
+        schedule: PT72H
+        offlineSkip: false
+        repeat: true
+      storeLogDb:
+        onInit: true
+        schedule: '1000'
+        offlineSkip: false
+        repeat: true
+      updateUserMonitor:
+        onInit: true
+        schedule: PT2S
+        offlineSkip: false
+        repeat: true
+      autoDeleteLogs:
+        onInit: true
+        schedule: PT1H
+        offlineSkip: false
+        repeat: true
+      loadExistedMonitors:
+        onInit: true
+        offlineSkip: false
+        repeat: false
+      
+
+    dev:
+
+    prod:

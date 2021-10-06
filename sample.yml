@@ -1,0 +1,36 @@
+name: horus_backend
+version: 123 
+
+env:
+    default_mode: dev
+
+    required_keys: 
+      - account:
+        - username
+        - password 
+
+
+    default:
+      cameraName: 12
+      processEnvVar:
+        SENTRY:
+          type: "String" 
+          defaultValue: false
+          accessGroup: "Advanced"
+          description: "Report errors to sentry system"
+          group: "System"
+
+        ROOT_API:
+          type: "String"
+          defaultValue: "192.168.28.194:2105"
+          accessGroup: "Advanced"
+          description: "Backend root API"
+          group: "API Url" 
+    dev:
+      account:
+        username: "horus123"
+        password: "123"
+    prod: 
+      account:
+        username: "horus111"
+        password: "111"

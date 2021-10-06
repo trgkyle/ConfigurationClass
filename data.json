@@ -1,0 +1,626 @@
+{
+    "name": "Horus",
+    "config": {
+      "name": "config",
+      "children": {
+        "DEFAULT": {
+          "name": "DEFAULT",
+          "children": {
+            "runRedisFromExe": {
+              "name": "runRedisFromExe",
+              "value": true,
+              "description": "Run Redis from executable"
+            },
+            "processEnvVar": {
+              "name": "processEnvVar",
+              "children": {
+                "System": {
+                  "name": "System",
+                  "children": {
+                    "SENTRY": {
+                      "name": "SENTRY",
+                      "value": "false",
+                      "accessGroup": "Advanced",
+                      "description": "Report errors to sentry system"
+                    }
+                  }
+                },
+                "API_URL": {
+                  "name": "API_URL",
+                  "children": {
+                    "ROOT_API": {
+                      "name": "ROOT_API",
+                      "value": "192.168.28.194:2105",
+                      "accessGroup": "Advanced",
+                      "description": "Backend root API"
+                    },
+                    "SOCKET_STREAM_URL": {
+                      "name": "SOCKET_STREAM_URL",
+                      "value": "192.168.28.194:3001",
+                      "accessGroup": "Advanced",
+                      "description": "Socket stream API Url"
+                    },
+                    "IMAGE_PREFIX": {
+                      "name": "IMAGE_PREFIX",
+                      "value": "192.168.28.194:9000",
+                      "accessGroup": "Advanced",
+                      "description": "Image prefix API Url"
+                    },
+                    "SSL": {
+                      "name": "SSL",
+                      "value": "false",
+                      "accessGroup": "Advanced",
+                      "description": "SSL"
+                    }
+                  }
+                },
+                "HISTORY_LOGS": {
+                  "name": "HISTORY_LOGS",
+                  "children": {
+                    "maximumCount": {
+                      "name": "HISTORY_LOGS",
+                      "value": 2000,
+                      "accessGroup": "Advanced",
+                      "description": "Maximum logs per query"
+                    },
+                    "maximumStore": {
+                      "name": "maximumStore",
+                      "value": 100000,
+                      "accessGroup": "Basic",
+                      "description": "Maximum logs can store"
+                    },
+                    "checkinTime": {
+                      "name": "checkinTime",
+                      "value": "8:30 am",
+                      "accessGroup": "Basic",
+                      "description": "Checkin time"
+                    },
+                    "checkoutTime": {
+                      "name": "checkoutTime",
+                      "value": "6:00 pm",
+                      "accessGroup": "Basic",
+                      "description": "Checkout time"
+                    },
+                    "timezone": {
+                      "name": "timezone",
+                      "value": "Asia/Saigon",
+                      "accessGroup": "Advanced",
+                      "description": "Timezone for checkin/checkout"
+                    }
+                  }
+                },
+                "MONITORS": {
+                  "name": "MONITORS",
+                  "children": {
+                    "maximumMonitors": {
+                      "name": "maximumMonitors",
+                      "value": 6,
+                      "accessGroup": "Advanced",
+                      "description": "Limit number monitors"
+                    }
+                  }
+                },
+                "LIB_FACE_DETECTION": {
+                  "name": "LIB_FACE_DETECTION",
+                  "children": {
+                    "faceDetectionThreshold": {
+                      "value": 0.5,
+                      "accessGroup": "Advanced",
+                      "description": "Face threshold for detection"
+                    },
+                    "targetSize": {
+                      "value": 960,
+                      "accessGroup": "Advanced",
+                      "description": "Size of frame for detection and primary streaming",
+                      "restart": true
+                    },
+                    "targetQuality": {
+                      "value": 85,
+                      "accessGroup": "Advanced",
+                      "description": "Frame quality for detection and primary streaming",
+                      "restart": true
+                    }
+                  }
+                },
+                "LIB_FACE_RECOGNITION": {
+                  "name": "LIB_FACE_RECOGNITION",
+                  "children": {
+                    "faceThreshold": {
+                      "name": "faceThreshold",
+                      "value": 0.835,
+                      "accessGroup": "Advanced",
+                      "description": "Face threshold for recognition"
+                    },
+                    "trueOnePersonThreshold": {
+                      "name": "trueOnePersonThreshold",
+                      "value": 0.84,
+                      "accessGroup": "Advanced",
+                      "description": "Register user face threshold for checking exists"
+                    },
+                    "quality": {
+                      "name": "quality",
+                      "value": 90,
+                      "accessGroup": "Advanced",
+                      "description": "Frame quality for recognition"
+                    },
+                    "registerSimilarityThreshold": {
+                      "name": "registerSimilarityThreshold",
+                      "value": 0.86,
+                      "accessGroup": "Advanced",
+                      "description": "Register uses face if similarity greater than value"
+                    },
+                    "liveness": {
+                      "name": "liveness",
+                      "value": "false",
+                      "accessGroup": "Advanced",
+                      "description": "Run liveness model for checking"
+                    },
+                    "MAX_IMAGE_PER_USER": {
+                      "name": "MAX_IMAGE_PER_USER",
+                      "value": 9,
+                      "accessGroup": "Advanced",
+                      "description": "Max faces can be registered per user"
+                    },
+                    "outputLimit": {
+                      "name": "outputLimit",
+                      "value": 9,
+                      "accessGroup": "Advanced",
+                      "description": "Limit faces output in search face"
+                    },
+                    "embeddingSize": {
+                      "name": "embeddingSize",
+                      "value": 512,
+                      "accessGroup": "Advanced",
+                      "description": "Size of the face embedding"
+                    },
+                    "autoFaceRegisteredLimit": {
+                      "name": "autoFaceRegisteredLimit",
+                      "value": 3,
+                      "accessGroup": "Advanced",
+                      "description": "Size of maximum faces can be automatic registered by monitor transaction"
+                    }
+                  }
+                },
+                "STREAMING": {
+                  "name": "Streaming",
+                  "children": {
+                    "secondaryStreamResolution": {
+                      "name": "secondaryStreamResolution",
+                      "value": 480,
+                      "accessGroup": "Advanced",
+                      "description": "Resolution for secondary stream"
+                    },
+                    "fps": {
+                      "name": "fps",
+                      "value": 10,
+                      "accessGroup": "Advanced",
+                      "description": "Frames per second"
+                    },
+                    "secondaryStreamQuality": {
+                      "name": "secondaryStreamQuality",
+                      "value": 60,
+                      "accessGroup": "Advanced",
+                      "description": "Frame Quality secondary primary"
+                    },
+                    "skipTrackingThreshold": {
+                      "name": "skipTrackingThreshold",
+                      "value": 3000,
+                      "accessGroup": "Advanced",
+                      "description": "Skip tracking if in $skipTrackingThreshold milliseconds recognize the same person"
+                    }
+                  }
+                },
+                "SSO": {
+                  "name": "SSO",
+                  "children": {
+                    "ROOT_API": {
+                      "name": "ROOT_API",
+                      "value": "https://horus-dashboard-fis-hrms.tunnel.techainer.com/api",
+                      "description": "SSO backend root api"
+                    },
+                    "USER": {
+                      "name": "USER",
+                      "value": "EVNHANOI",
+                      "description": "SSO USER"
+                    },
+                    "PASS": {
+                      "name": "PASS",
+                      "value": "EVNHANOI@CuongX16",
+                      "description": "SSO PASS"
+                    }
+                  }
+                }
+              }
+            },
+            "Database": {
+              "name": "Database",
+              "children": {
+                "PORT": {
+                  "name": "PORT",
+                  "value": 80,
+                  "description": "Database port"
+                },
+                "BindIP": {
+                  "name": "BindIP",
+                  "value": "0.0.0.0",
+                  "description": "Database bind IP"
+                },
+                "logLevel": {
+                  "name": "logLevel",
+                  "value": "info",
+                  "description": "Database log level"
+                },
+                "offline": {
+                  "name": "offline",
+                  "value": false,
+                  "description": "Offline database"
+                },
+                "ssl": {
+                  "name": "ssl",
+                  "value": false,
+                  "description": "Database SSL"
+                },
+                "POSTGRE": {
+                  "name": "POSTGRE",
+                  "value": "postgres://postgres:horus123@localhost:15432/postgres",
+                  "description": "PostgreSQL connection string"
+                },
+                "REDIS": {
+                  "name": "REDIS",
+                  "value": "redis://localhost:6379?ConnectTimeout=5000&IdleTimeOutSecs=180",
+                  "description": "Redis connection string"
+                }
+              }
+            },
+            "enableAPI": {
+              "value": true,
+              "description": "Enable API"
+            },
+            "language": {
+              "name": "language",
+              "children": {
+                "code": {
+                  "name": "code",
+                  "value": "en",
+                  "description": "Language code"
+                },
+                "autoUpdate": {
+                  "name": "autoUpdate",
+                  "value": true,
+                  "description": "Automatically update language"
+                },
+                "namespaces": {
+                  "name": "namespaces",
+                  "value": [],
+                  "description": "Namespaces"
+                },
+                "namespacing": {
+                  "name": "namespacing",
+                  "value": false,
+                  "description": "Enable namespacing"
+                },
+                "rtl": {
+                  "name": "rtl",
+                  "value": false,
+                  "description": "Enable RTL"
+                }
+              }
+            },
+            "title": {
+              "name": "title",
+              "value": "Horus",
+              "description": "Title"
+            },
+            "theming": {
+              "name": "theming",
+              "children": {
+                "theme": {
+                  "name": "theme",
+                  "value": "default",
+                  "description": "Specify theme"
+                },
+                "iconset": {
+                  "name": "iconset",
+                  "value": "md",
+                  "description": "Specify iconset"
+                },
+                "darkMode": {
+                  "name": "darkMode",
+                  "value": false,
+                  "description": "Enable dark mode"
+                }
+              }
+            },
+            "security": {
+              "name": "security",
+              "children": {
+                "securityOpenRedirect": {
+                  "name": "securityOpenRedirect",
+                  "value": true,
+                  "description": "to-be-filled-in"
+                },
+                "securityIframe": {
+                  "name": "securityIframe",
+                  "value": true,
+                  "description": "to-be-filled-in"
+                },
+                "securityReferrerPolicy": {
+                  "name": "securityReferrerPolicy",
+                  "value": true,
+                  "description": "to-be-filled-in"
+                },
+                "securityTrustProxy": {
+                  "name": "securityTrustProxy",
+                  "value": true,
+                  "description": "to-be-filled-in"
+                },
+                "securityHSTS": {
+                  "name": "scurityHSTS",
+                  "value": false,
+                  "description": "to-be-filled-in"
+                },
+                "securityHSTSDuration": {
+                  "name": "securityHSTSDuration",
+                  "value": 300,
+                  "description": "to-be-filled-in"
+                }
+              }
+            },
+            "uploads": {
+              "name": "uploads",
+              "children": {
+                "maxFileSize": {
+                  "name": "maxFileSize",
+                  "value": 800000000,
+                  "description": "Maximum file size"
+                },
+                "maxFiles": {
+                  "name": "maxFiles",
+                  "value": 20,
+                  "description": "Maximum number of files"
+                }
+              }
+            },
+            "flags": {
+              "name": "flags",
+              "children": {
+                "ldapdebug": {
+                  "name": "ldapdebug",
+                  "value": false,
+                  "description": "Enable ldap debug"
+                },
+                "sqllog": {
+                  "name": "sqllog",
+                  "value": false,
+                  "description": "Enable sql log"
+                }
+              }
+            },
+            "channel": {
+              "name": "channel",
+              "value": "STABLE",
+              "description": "Channel"
+            },
+            "setup": {
+              "name": "setup",
+              "value": false,
+              "description": "Setup"
+            },
+            "cors": {
+              "name": "cors",
+              "children": {
+                "credentials": {
+                  "name": "credentials",
+                  "value": true,
+                  "description": "Enable CORS with credentials"
+                },
+                "maxAge": {
+                  "name": "maxAge",
+                  "value": 600,
+                  "description": "CORS max age"
+                },
+                "methods": {
+                  "name": "methods",
+                  "value": "GET,POST,OPTIONS",
+                  "description": "CORS methods"
+                },
+                "origin": {
+                  "name": "origin",
+                  "value": true,
+                  "description": "CORS origin"
+                }
+              }
+            },
+            "admin": {
+              "name": "Admin",
+              "children": {
+                "email": {
+                  "name": "email",
+                  "value": "admin@horus.com",
+                  "description": "Admin email"
+                },
+                "password": {
+                  "name": "password",
+                  "value": "horus123",
+                  "description": "Admin password"
+                },
+                "position": {
+                  "name": "position",
+                  "value": "Developer",
+                  "description": "Admin position"
+                },
+                "memberId": {
+                  "name": "memberId",
+                  "value": "HE150068",
+                  "description": "Admin member ID"
+                },
+                "orgName": {
+                  "name": "orgName",
+                  "value": "Techainer",
+                  "description": "Admin organisation name"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "jobs": {
+      "name": "jobs",
+      "children": {
+        "fileCustomerProcess": {
+          "name": "fileCustomerProcess",
+          "children": {
+            "onInit": true,
+            "offlineSkip": false,
+            "repeat": false
+          }
+        },
+        "subscriptionLog": {
+          "name": "subscriptionLog",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "schedule": {
+              "name": "schedule",
+              "value": "50",
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": true,
+              "description": ""
+            }
+          }
+        },
+        "syncSso": {
+          "name": "syncSSO",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "schedule": {
+              "name": "schedule",
+              "value": "PT72H",
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": true,
+              "description": ""
+            }
+          }
+        },
+        "storeLogDb": {
+          "name": "storeLogDb",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "schedule": {
+              "name": "schedule",
+              "value": "1000",
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": true,
+              "description": ""
+            }
+          }
+        },
+        "updateUserMonitor": {
+          "name": "updateUserMonitor",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "schedule": {
+              "name": "schedule",
+              "value": "PT2S",
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": true,
+              "description": ""
+            }
+          }
+        },
+        "autoDeleteLogs": {
+          "name": "autoDeleteLogs",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "schedule": {
+              "name": "schedule",
+              "value": "PT1H",
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": true,
+              "description": ""
+            }
+          }
+        },
+        "loadExistedMonitors": {
+          "name": "loadExistedMonitor",
+          "children": {
+            "onInit": {
+              "name": "onInit",
+              "value": true,
+              "description": ""
+            },
+            "offlineSkip": {
+              "name": "offlineSkip",
+              "value": false,
+              "description": ""
+            },
+            "repeat": {
+              "name": "repeat",
+              "value": false,
+              "description": ""
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,69 @@
+name: horus_backend
+version: 
+
+env:
+    default_mode: -> Chọn env của dev hay prod 
+
+    required_keys: -> Nhũng key bắt buộc phải có (trong dev, prod)
+
+    default: -> environment variable dùng chung cho cả dev và prod  
+
+    dev: -> environtment variable dùng cho bản dev
+
+    prod: -> environtment variable dùng cho bản prod 
+
+    Question: 
+        1 - Trong config data.yml của horus_backend -> env nào default, env nào của (dev, prod);
+        2 - Phần Jobs trong data.yml đặt ở đâu (default, dev, prod, ..?)
+
+
+
+1 - kiểu dữ liệu từ yml sang javascript object có khác nhau không ?
+    -> JS-Yaml da check syntax khi load file, kieu du lieu thi tuy thuoc vao cach viet trong yaml
+2 - muốn ghi đè config  từ máy bằng environment variables vào thì làm như thế nào ?
+    ->  
+3 - lưu các env này vào database như thế nào ?
+    - Design Table ? 
+    Field 'key' : định danh config (indexes)
+    Field 'value' : giá trị của config
+    Field 'type' : kiểu giá trị của config
+    Field 'env' : môi trường sử dụng config, enum('dev, prod, default,...') (indexes)
+    Field 'group': thuộc nhóm nào 
+    -> Cần confirm table format 
+4 - muốn chuyển đổi linh hoạt env default với production, test được không ?
+
+---------------------------------------------------------------------------------------
+Cần khai báo một lớp (class) thực hiện cho phần configuration của be:
+
+có hàm parse sang kiểu của json (ép kiểu dữ liệu)
+Assign thay đổi được các biến đến được export từ variable enviroments tác động lên config
+Lưu các phần env vào cơ sở dữ liệu,
+
+
+Report ngày 06/10: 
+    1 - Confirm được format của file config theo bản mẫu của anh Lucas
+        name: 
+        version: 
+
+        env:
+            default_mode: -> Chọn env của dev hay prod 
+
+            required_keys: -> Nhũng key bắt buộc phải có (trong dev, prod)
+
+            default: -> environment variable dùng chung cho cả dev và prod  
+
+            dev: -> environtment variable dùng cho bản dev
+
+            prod: -> environtment variable dùng cho bản prod 
+    2 - Viết lại format cho file config (data.yml) của backend theo format trên
+        Vấn đề  cần anh @Kyle confirm
+            + Cần biết những env nào thuộc phần default, dev, prod
+            + Phần Jobs trong data.yml thì cho vào phần nào trong file 
+            + Tạm thời em đang để các env variable trong defaut 
+    3 - Viết Configuration class đọc file data.yml với một số  method như sau:
+        - Parse yml ra Js Object, Json 
+        - Sửa Key-Value cho environment variable 
+        - Save lại config ra file yml 
+        - Get All key - value để lưu vào Database 
+        Vấn đề của lưu key - value vào database:
+            + Cần thiết kế table trong database như thế nào? (tối nay anh Harry sẽ confirm lại với anh Drake) 

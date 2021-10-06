@@ -1,0 +1,61 @@
+###
+# This is the main configuration file for the application. 
+###
+name: horus_frontend # Name of application
+version: 0.0.1 # Version of application
+
+env:
+    default_mode: prod # Default mode for application
+    required_keys: # All required key defined here 
+    - ROOT_API
+    - FIS:   # Can be like this or FIS.URL_PAGE
+        - URL_PAGE
+        - URL_API
+        - URL_API_CHANGE_PASSWORD
+        - IS_URL_SSL
+        - DEFAULT_USER
+        - DEFAULT_PASSWORD
+    - SCAN_URL
+
+    default: 
+        SENTRY_DSN:
+            name: "SENTRY DSN"
+            value: "https://e46f8895ea7a480f83bcf5f3b1a697d4@sentry.techainer.com/5"
+            description: "The Sentry URL"
+
+    dev:
+        ROOT_API:
+            name: "ROOT API"
+            value: "https://horus-dashboard-kyle.tunnel.techainer.com"
+            description: "The Root API of Backend"
+        FIS: 
+            name: "FIS"
+            description: "All FIS Configurations up here"
+            children:
+                URL_PAGE:
+                    name: "FIS URL PAGE"
+                    value: "horus-dashboard-fis.tunnel.techainer.com"
+                    description: "The FIS HomePage"
+                URL_API:
+                    name: "FIS URL API"
+                    value: "horus-dashboard-fis.tunnel.techainer.com/api"
+                    description: "The FIS URL API"
+                URL_API_CHANGE_PASSWORD:
+                    name: "FIS URL API CHANGE PASSWORD"
+                    value: "10.9.125.79:1111"
+                    description: "The FIS URL API to Change Password"
+                IS_URL_SSL:
+                    value: true
+                    description: "IS FIS URL_SSL?"
+                DEFAULT_USER:
+                    value: "admin@horus.com"
+                    description: "The Default User email"
+                DEFAULT_PASSWORD:
+                    value: "horus123"
+                    description: "The Default User Password"
+        SCAN_URL:
+            name: "SCAN URL"
+            value: "http://localhost:8081/twain-web"
+            description: "The default Scan URL"
+        
+    prod: {}
